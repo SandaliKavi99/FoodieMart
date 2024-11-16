@@ -1,0 +1,23 @@
+.container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img{
+    height: 40rem;
+    width: 40rem;
+    object-fit: cover;
+}
+
+.text{
+   position: absolute;
+   margin-top:2rem;
+   margin-left: 2rem;
+}
+
+.text span{
+    font-size: 2rem;
+    color: #e72929;
+}

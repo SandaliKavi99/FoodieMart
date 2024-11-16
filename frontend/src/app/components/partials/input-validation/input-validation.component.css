@@ -1,0 +1,6 @@
+.error-list{
+    position: relative;
+    color: red;
+    height: 2rem;
+    z-index: 10;
+}
