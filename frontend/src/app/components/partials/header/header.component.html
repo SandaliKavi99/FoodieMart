@@ -3,10 +3,10 @@
         <a routerLink="/" class="logo">FoodieMart</a>
         <nav>
             <ul>
-                <li *ngIf="!isAuth">
+                <li *ngIf="!user.name">
                     <a routerLink="/login" class="nav-login">Login</a>
                 </li>
-                <li  *ngIf="isAuth">
+                <li  *ngIf="user.name">
                     <div class="menu-container" (click)="toggleMenu()">
                         <a routerLink="/dashboard" class="nav-dashboard">{{user.name}}</a>
                     </div>
@@ -16,7 +16,7 @@
                             <a class="nav-logout" (click)="logout()">Logout</a>
                     </div>
                 </li>
-                <li *ngIf="isAuth">
+                <li *ngIf="user.name">
                     <a routerLink="/cart" class="nav-cart">Cart 
                         <span>3</span>
                     </a>

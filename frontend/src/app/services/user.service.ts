@@ -28,11 +28,11 @@ export class UserService {
   
     return this.http.post<User>(USER_LOGIN_URL, userLogin)
       .pipe(tap({
-        next: (user) => {
-          this.setUserToLocalStorage(user);
-          this.userSubject.next(user);
+        next: (userDetails) => {
+          this.setUserToLocalStorage(userDetails);
+          this.userSubject.next(userDetails);
           this.toastrService.success(
-            `Welcome to FoodieMart ${user.name}!`, 'Login Successful'
+            `Welcome to FoodieMart ${userDetails.name}!`, 'Login Successful'
           );
         },
         error: (errorResponse) => {
@@ -45,6 +45,7 @@ export class UserService {
    logout(){
     this.userSubject.next(new User());
     localStorage.removeItem(USER_KEY);
+    localStorage.removeItem('jwtToken');
     window.location.reload();
    }
 

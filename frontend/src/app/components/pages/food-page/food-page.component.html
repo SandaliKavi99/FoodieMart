@@ -1,4 +1,5 @@
-<diV class="container">
+<diV *ngIf="food; else loading" class="container">
+    <p style=>{{food.id}}</p>
     <img [src]="food.imageUrl" [alt]="food.name" />
     <diV class="details">
         <div class="header">
@@ -30,3 +31,6 @@
         <button>Add to Cart</button>
     </diV>
 </diV>
+<ng-template #loading>
+    <p>Loading food details...</p>
+  </ng-template>

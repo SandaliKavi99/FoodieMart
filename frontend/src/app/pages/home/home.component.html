@@ -1,5 +1,5 @@
 <app-search></app-search>
-<div>
+<div *ngIf="foods; else loading">
   <ul>
     <li *ngFor="let food of foods">
       <a routerLink="/food/{{food.id}}">
@@ -38,8 +38,6 @@
         </diV>
       </a>
     </li>
-</ul>
-<ul>
     <li *ngFor="let food of foods">
       <a routerLink="/food/{{food.id}}">
         <img [src]="food.imageUrl" [alt]="food.name" />
@@ -78,11 +76,14 @@
       </a>
     </li>
 </ul>
- <div class="container">
+<div *ngIf="!foods" class="container">
   <img src="../../../assets/not-found.jpg"/>
   <div class="text">
-      <span>No Result</span>
+      <span>Food Not Found</span>
   </div>
 </div>
 
 </div>
+<ng-template #loading>
+  <p>Loading food details...</p>
+</ng-template>

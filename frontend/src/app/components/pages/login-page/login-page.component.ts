@@ -35,9 +35,26 @@ export class LoginPageComponent implements OnInit {
     this.isSubmited = true;
     if(this.loginForm.invalid) return;
 
-   this.userService.login({email:this.fc.email.value,password:this.fc.password.value}).subscribe(()=>{
-    this.router.navigateByUrl(this.returnUrl);
-   })
+   this.userService.login({email:this.fc.email.value,password:this.fc.password.value}).subscribe(
+    (response: any) => {
+      // Assuming the token is returned in `response.token`
+      const token = response.token;
+
+      if (token) {
+        // Store the token in localStorage
+        localStorage.setItem('jwtToken', token);
+        //console.log(localStorage.getItem("jwtToken"))
+
+        // Navigate to the desired URL
+        this.router.navigateByUrl(this.returnUrl);
+      }
+    },
+    (error) => {
+      console.error('Login failed:', error);
+      // Handle error (e.g., display error message to user)
+    }
+  
+  )
   }
 
 }
